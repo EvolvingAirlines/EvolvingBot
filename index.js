@@ -241,6 +241,7 @@ client.once("ready", () => {
       }, 10000)
     }, 5000)
   });
+  // KONIEC CZĘŚCI ATIS
 });
 
 client.on("message", (message) => {
