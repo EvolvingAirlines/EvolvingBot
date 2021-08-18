@@ -3,9 +3,21 @@ const fs = require("fs");
 const config = require("./config.json");
 const prefix = config.prefix;
 const axios = require("axios");
+const WebSocket = require("ws")
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
+const ws = new WebSocket('ws://marcink50.ddns.net:3000');
+
+ws.on('open', function open() {
+  setInterval(() => {
+    ws.send('send');
+  }, 2000)
+});
+ws.on('message', function incoming(message) {
+  console.log('received: %s', message);
+});
 
 const commandFiles = fs
   .readdirSync("./commands")
