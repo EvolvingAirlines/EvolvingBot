@@ -2,8 +2,8 @@ const Discord = require("discord.js");
 const mysql = require("mysql");
 
 module.exports = {
-  name: "current-flights",
-  aliases: ["loty", "aktualne-loty", "actual-flights"],
+  name: "flight-info",
+  aliases: ["info-o-locie"],
   description:
     "Shows current flights registered by the Evolving Airlines flight tracking system.",
   execute(message) {

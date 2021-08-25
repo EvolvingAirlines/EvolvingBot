@@ -11,10 +11,10 @@ module.exports = {
 
     function handleDisconnect() {
       connection = mysql.createConnection({
-        host: "localhost",
-        user: "marcin",
-        password: "01891484",
-        database: "passing",
+        host: process.env.DB_HOST,
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB,
       });
 
       connection.connect(function (err) {
