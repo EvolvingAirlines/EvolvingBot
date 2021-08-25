@@ -2,3 +2,4 @@ DB_HOST=localhost
 DB_USER=MyDatabaseUser
 DB_PASS=Str0ngP@ssw0rd
 DB=evolving
+TOKEN=discordtoken123
