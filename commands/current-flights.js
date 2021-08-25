@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const mysql = require("mysql");
+const fetch = require('node-fetch')
 
 module.exports = {
   name: "current-flights",
