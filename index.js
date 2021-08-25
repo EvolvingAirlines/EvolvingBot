@@ -45,7 +45,7 @@ for (const file of commandFiles) {
 client.once("ready", () => {
   console.log("Ready!");
   // CZĘŚĆ METAR
-  client.channels.fetch("867709439406112808").then((channel) => {
+  client.channels.fetch("879430162662449162").then((channel) => {
     const airports = ["EDDV"];
 
     airports.forEach((airport) => {
@@ -213,7 +213,7 @@ client.once("ready", () => {
   });
   // KONIEC CZĘŚCI METAR
   // CZĘŚĆ ATIS
-  client.channels.fetch("867709398822289409").then((channel) => {
+  client.channels.fetch("879430150331199489").then((channel) => {
     fs.readFile("db.json", "utf-8", (err, data) => {
       if (err) {
         throw err;
