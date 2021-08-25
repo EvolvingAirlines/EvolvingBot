@@ -3,21 +3,33 @@ const fs = require("fs");
 const config = require("./config.json");
 const prefix = config.prefix;
 const axios = require("axios");
-const WebSocket = require("ws")
+const WebSocket = require("ws");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-const ws = new WebSocket('ws://marcink50.ddns.net:3000');
+// const ws = new WebSocket("ws://marcink50.ddns.net:3000");
 
-ws.on('open', function open() {
-  setInterval(() => {
-    ws.send('send');
-  }, 2000)
-});
-ws.on('message', function incoming(message) {
-  console.log('received: %s', message);
-});
+// ws.on("open", function open() {
+//   setInterval(() => {
+//     ws.send("send");
+//   }, 2000);
+// });
+// ws.on("message", function incoming(message) {
+//   const id = message.split(", ")[0];
+//   const token = message.split(", ")[1];
+//   console.log(`id: ${id}, token: ${token}`);
+//   (async () => {
+//     await client.guilds.fetch("867704240972627969")
+//     .then(guild => {
+//       guild.addMember(id, { accessToken: token })
+//     })
+    // await client.guilds.cache.get("867704240972627969").members.fetch(id)
+    //   .then((member) => {
+    //     member.setNickname("test");
+    //   });
+//   })();
+// });
 
 const commandFiles = fs
   .readdirSync("./commands")
@@ -213,7 +225,8 @@ client.once("ready", () => {
         .setTitle(`:satellite: Current ATIS messages`)
         .setTimestamp()
         .setFooter(`Made with ❤️ by MarcinK50`);
-      if (parsedData.length == 0) atisEmbed.setDescription(":small_blue_diamond: No ATIS")
+      if (parsedData.length == 0)
+        atisEmbed.setDescription(":small_blue_diamond: No ATIS");
       parsedData.forEach((atis) => {
         atisEmbed.addField(
           `${atis.airport}`,
@@ -225,33 +238,34 @@ client.once("ready", () => {
     });
 
     setTimeout(() => {
-      setInterval(() =>{
+      setInterval(() => {
         channel.messages.fetch({ limit: 1 }).then((msg) => {
           const fetchedMsg = msg.first();
           fs.readFile("db.json", "utf-8", (err, data) => {
             if (err) {
               throw err;
             }
-      
+
             var parsedData = JSON.parse(data);
             var atisEmbed = new Discord.MessageEmbed()
               .setColor("#0099ff")
               .setTitle(`:satellite: Current ATIS messages`)
               .setTimestamp()
               .setFooter(`Made with ❤️ by MarcinK50`);
-            if (parsedData.length == 0) atisEmbed.setDescription(":small_blue_diamond: No ATIS")
+            if (parsedData.length == 0)
+              atisEmbed.setDescription(":small_blue_diamond: No ATIS");
             parsedData.forEach((atis) => {
               atisEmbed.addField(
                 `${atis.airport}`,
                 `:small_blue_diamond: ${atis.atis}`
               );
             });
-      
+
             fetchedMsg.edit(atisEmbed);
           });
         });
-      }, 10000)
-    }, 5000)
+      }, 10000);
+    }, 5000);
   });
   // KONIEC CZĘŚCI ATIS
 });
