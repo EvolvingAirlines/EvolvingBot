@@ -2,7 +2,7 @@ require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require("fs");
 const config = require("./config.json");
-const prefix = config.prefix;
+const prefix = process.env.PREFIX;
 const axios = require("axios");
 const WebSocket = require("ws");
 
@@ -46,13 +46,13 @@ for (const file of commandFiles) {
 client.once("ready", () => {
   console.log("Ready!");
   // CZĘŚĆ METAR
-  client.channels.fetch("879430162662449162").then((channel) => {
+  client.channels.fetch(process.env.METARCHANNEL).then((channel) => {
     const airports = ["EDDV"];
 
     airports.forEach((airport) => {
       axios
         .get(
-          `https://avwx.rest/api/metar/${airport}?token=5KZMQbG7X9iN2HR45G5t0KgLA4Y02DRH4YF-u2jB3UA`
+          `https://avwx.rest/api/metar/${airport}?token=${process.env.METARTOKEN}`
         )
         .then(function (response) {
           if (response.data.remarks) {
@@ -137,7 +137,7 @@ client.once("ready", () => {
           const fetchedMsg = msg.first();
           axios
             .get(
-              `https://avwx.rest/api/metar/EDDV?token=5KZMQbG7X9iN2HR45G5t0KgLA4Y02DRH4YF-u2jB3UA`
+              `https://avwx.rest/api/metar/EDDV?token=${process.env.METARTOKEN}`
             )
             .then(function (response) {
               if (response.data.remarks) {
@@ -214,7 +214,7 @@ client.once("ready", () => {
   });
   // KONIEC CZĘŚCI METAR
   // CZĘŚĆ ATIS
-  client.channels.fetch("879430150331199489").then((channel) => {
+  client.channels.fetch(process.env.ATISCHANNEL).then((channel) => {
     fs.readFile("db.json", "utf-8", (err, data) => {
       if (err) {
         throw err;

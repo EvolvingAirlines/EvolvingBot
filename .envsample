@@ -6,3 +6,4 @@ TOKEN=discordtoken123
 METARTOKEN=yourtokenfromhttps://avwx.rest
 ATISCHANNEL=idofatischannel
 METARCHANNEL=idofmetarchannel
+PREFIX=!
