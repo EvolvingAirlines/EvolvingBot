@@ -292,4 +292,4 @@ client.on("message", (message) => {
   }
 });
 
-client.login(process.env.TOKEN);
+client.login('ODgwMDk0NDQ2NjE4ODA4NDEx.YSZR0w.EPmreeayrraBJX_PePb4QUFvLwA');

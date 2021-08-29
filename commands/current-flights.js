@@ -9,6 +9,8 @@ module.exports = {
     "Shows current flights registered by the Evolving Airlines flight tracking system.",
   execute(message) {
     fetch('http://marcink50.ddns.net:3000/getCurrentFlights')
+    .then(response => response.json())
+    .then(data => {
       const exampleEmbed = new Discord.MessageEmbed()
         .setColor("#0099ff")
         .setTitle(`:small_blue_diamond: Current flights`)
@@ -29,5 +31,6 @@ module.exports = {
         });
       }
       message.channel.send(exampleEmbed);
+    })
   },
 };
