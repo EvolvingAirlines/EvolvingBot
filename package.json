@@ -1,14 +1,14 @@
 {
-  "name": "PassingBot",
+  "name": "EvolvingBot",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Discord Bot for Evolving Virtual Airlines",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "MarcinK50",
+  "license": "MIT",
   "devDependencies": {
     "eslint": "^7.30.0"
   },

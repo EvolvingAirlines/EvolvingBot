@@ -3,3 +3,7 @@ DB_USER=MyDatabaseUser
 DB_PASS=Str0ngP@ssw0rd
 DB=evolving
 TOKEN=discordtoken123
+METARTOKEN=yourtokenfromhttps://avwx.rest
+ATISCHANNEL=idofatischannel
+METARCHANNEL=idofmetarchannel
+PREFIX=!
