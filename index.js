@@ -1,7 +1,6 @@
 require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require("fs");
-const config = require("./config.json");
 const prefix = process.env.PREFIX;
 const axios = require("axios");
 const WebSocket = require("ws");
