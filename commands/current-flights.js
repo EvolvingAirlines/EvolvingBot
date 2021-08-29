@@ -25,7 +25,7 @@ module.exports = {
       } else {
         data.flights.forEach((flight) => {
           exampleEmbed.addField(
-            `:small_blue_diamond: ${flight.pilotNick}`,
+            `:small_blue_diamond: ${flight.username}`,
             `At ${flight.altitude}ft, with heading ${flight.heading} and speed ${flight.speed}kt`
           );
         });
